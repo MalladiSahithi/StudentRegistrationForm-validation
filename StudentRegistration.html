@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Registration Form</title>
+<style>
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+hr {
+  border: 1px solid black;
+}
+p {
+  font-size: 30px;
+}
+.box {
+  padding: 16px;
+}
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 2px solid black;
+  background: lightgrey;
+}
+#register-button {
+  padding: 5px;
+  margin: 5px 0 22px 0;
+  background: lightgrey;
+  width: 100%;
+}
+</style>
+<script type="text/javascript">
+function message() {
+  alert("Successfully Registered");
+}
+function validateForm() {
+  var fstname = document.forms["registrationForm"]["fstname"].value;
+  var lstname = document.forms["registrationForm"]["lstname"].value;
+  var email = document.forms["registrationForm"]["email"].value;
+  var psw = document.forms["registrationForm"]["psw"].value;
+  var pswConfirm = document.forms["registrationForm"]["psw-confirm"].value;
+
+  var nameRegex = /^[a-zA-Z\s]+$/;
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!fstname.match(nameRegex) || !lstname.match(nameRegex)) {
+    alert("Invalid name format");
+    return false;
+  }
+
+  if (!email.match(emailRegex)) {
+    alert("Invalid email format");
+    return false;
+  }
+
+  if (psw.length < 8) {
+    alert("Password must be at least 8 characters long");
+    return false;
+  }
+
+  if (psw !== pswConfirm) {
+    alert("Passwords do not match");
+    return false;
+  }
+}
+</script>
+</head>
+<body>
+<h1><u>REGISTRATION FORM</u></h1>
+<hr>
+<form name="registrationForm" onsubmit="return validateForm()">
+<div class="box">
+<label for="fstname"><b>FirstName:</b></label>
+<input type="text" placeholder="Enter FirstName" name="fstname" required>
+<br><br>
+<label for="lstname"><b>LastName:</b></label>
+<input type="text" placeholder="Enter LastName" name="lstname" required>
+<br><br>
+<label for="email"><b>Email:</b></label>
+<input type="text" placeholder="Enter Email" name="email" required>
+<br><br>
+<label for="psw"><b>Password:</b></label>
+<input type="password" placeholder="Enter Password" name="psw" required>
+<br><br>
+<label for="psw-confirm"><b>Confirm Password:</b></label>
+<input type="password" placeholder="Repeat Password" name="psw-confirm" required>
+<br><br>
+<input type="submit" value="REGISTER" id="register-button"/>
+</div>
+</form>
+</body>
+</html>
+
